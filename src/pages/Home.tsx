@@ -7,6 +7,7 @@ import PokemonCard from "../components/PokemonCard";
 import { RootState } from "../redux/store";
 import { POKEMON_TYPES } from "../constants";
 import styles from "./Home.module.scss";
+import Draggable from 'react-draggable';
 
 
 
@@ -97,9 +98,12 @@ export const Home = () => {
                     sx={{ display: "flex", justifyContent: "center" }}>
                     <Grid container spacing={2}>
                         {pokemons.listPokemons.length > 0 ? pokemons.listPokemons.map((p, id) => (
-                            <Grid key={id} item xs={4}>
+                            <Draggable allowAnyClick={true}>
+                                <Grid key={id} item xs={4}>
                                     <PokemonCard pokemon={p} />
                                 </Grid>
+                            </Draggable>
+                            
                             ))
                             : null}
                     </Grid>
